@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <title>Calculator</title>
+        <style>
+            .buttons{
+        
+                display: grid;
+                grid-template-columns: repeat(4,60px);
+                grid-gap:20px;
+
+            }
+            button{
+        
+                width: 50px;
+                height:50px;
+                color:antiquewhite;
+                justify-content: center;
+                align-items: center;
+                margin-left: 30px;
+                font-size: 17px;
+                border-radius: 6px;
+                border:none;
+                background-color:rgb(198, 16, 138);
+            }
+            button:hover{
+            background-color: rgb(237, 12, 117);
+            }
+            button:active{
+                background-color: rgb(248, 13, 205);
+            }
+            .container{
+                width:350px;
+            height:450px;
+            border:5px solid rgb(198, 16, 138);
+            padding:50px;
+            background: linear-gradient(to right, rgb(240, 76, 130), rgb(255, 148, 114));
+         border-radius: 10px; 
+            
+            
+            }
+            #f{
+                height: 100px;
+                width:300px;
+                border:2px solid rgb(198, 16, 138);
+                border-radius: 5px;
+                margin-left:30px;
+                background-color:  rgb(243, 235, 239) ;
+            }
+            body{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <input id="f" type="text"  /><br><br><br><br>
+            <div class="buttons">
+            <button  onclick="num('(')">(</button>
+            <button  onclick="clearlast()">CE</button>
+            <button  onclick="num(')')">)</button>
+            <button  onclick="cleardisp()">C</button>
+            <button  onclick="num('1')">1</button>
+            <button  onclick="num('2')">2</button>
+            <button  onclick="num('3')">3</button>
+            <button  onclick="num('+')">+</button>
+            <button  onclick="num('4')">4</button>
+            <button  onclick="num('5')">5</button>
+            <button  onclick="num('6')">6</button>
+            <button  onclick="num('-')">-</button>
+            <button  onclick="num('7')">7</button>
+            <button  onclick="num('8')">8</button>
+            <button  onclick="num('9')">9</button>
+            <button  onclick="num('*')">*</button>
+            <button  onclick="num('.')">.</button>
+            <button  onclick="num('0')">0</button>
+            <button  onclick="cal()">=</button>
+            <button  onclick="num('/')">/</button>
+        </div>
+    </div>
+        <script>
+            function num(clicked){
+                document.getElementById("f").value +=clicked;
+            }
+            function cleardisp(){
+                document.getElementById("f").value="";
+            }
+            function clearlast(){
+                let exp=document.getElementById("f").value;
+                document.getElementById("f").value=exp.slice(0,-1);
+                }
+            function cal(){
+                let exp=document.getElementById("f").value;
+                try{
+                    let res =eval(exp);
+                    document.getElementById("f").value=res;
+                }catch(error){
+                    document.getElementById("f").value="";
+                    document.getElementById("f").placeholder="Error";
+                }
+            }
+
+        </script>
+    </body>
+</html>
